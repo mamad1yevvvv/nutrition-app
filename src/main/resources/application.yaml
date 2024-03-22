@@ -1,0 +1,43 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:1234/postgres
+    username: postgres
+    password: postgres
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: mamad1yevvvv@gmail.com
+    password: hfln ztpe iady idbq
+
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+    default-encoding: UTF-8
+
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+    hibernate:
+      ddl-auto: update
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+security:
+    jwt:
+      key: 1PPBmcdA8YCBg1LQCPz8zuRKw6fmZVJfxEwcsT0SvfX6LWK31QTJrrBTh1NEFNQz
+logging:
+  level:
+    web: debug
