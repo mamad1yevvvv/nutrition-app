@@ -62,9 +62,6 @@ public class UserService  implements UserDetailsService {
         if (!emailService.isValid(userCreateDto.getEmail())){
             throw new InvalidEmailAddressException("%s is not valid ".formatted(email));
         }
-        /*if (emailRepository.findById(email).isPresent()) {
-            throw new EmailAlreadyExistException("%s email is not verified. Please verify it!".formatted(email));
-        }*/
         if (repository.findUserByEmail(email).isPresent()){
             throw new EmailAlreadyExistException("User with email %s already exist".formatted(email));
         }
@@ -107,23 +104,6 @@ public class UserService  implements UserDetailsService {
         repository.save(user);
 
         return modelMapper.map(user, UserResponseDto.class);
-    }
-    
-    public User getUserByEmail(String email){
-        return repository.findUserByEmail(email)
-                .orElseThrow(
-                        () -> new EntityNotFoundException("user with email = %s not found".formatted(email))
-                );
-    }
-    public UserBaseDto getUserProfile(Long id) {
-
-        User user = repository.findById(id).orElseThrow(EntityNotFoundException::new);
-
-        return modelMapper.map(user, UserBaseDto.class);
-    }
-
-    public void deleteUser(Long id) {
-        repository.deleteById(id);
     }
 
     public UserResponseDto updateUser(UserPatchDto updateDto, Long id) {
