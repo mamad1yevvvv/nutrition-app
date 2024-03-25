@@ -116,4 +116,15 @@ public class UserService  implements UserDetailsService {
 
         return getModelMapper().map(saved , UserResponseDto.class);
     }
+
+    public void deleteUser(Long id) {
+        repository.deleteById(id);
+    }
+
+    public UserBaseDto getUserProfile(Long id) {
+
+        User user = repository.findById(id).orElseThrow(EntityNotFoundException::new);
+
+        return modelMapper.map(user , UserBaseDto.class);
+    }
 }
