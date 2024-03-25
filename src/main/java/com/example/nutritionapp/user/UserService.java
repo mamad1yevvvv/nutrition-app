@@ -7,6 +7,7 @@ import com.example.nutritionapp.email.entity.OTP;
 import com.example.nutritionapp.exception.EmailAlreadyExistException;
 import com.example.nutritionapp.exception.InvalidEmailAddressException;
 import com.example.nutritionapp.exception.PasswordNotMatchException;
+import com.example.nutritionapp.exception.UserNotFoundException;
 import com.example.nutritionapp.user.dto.*;
 import com.example.nutritionapp.user.entity.User;
 import jakarta.persistence.EntityNotFoundException;
@@ -108,7 +109,9 @@ public class UserService  implements UserDetailsService {
 
     public UserResponseDto updateUser(UserPatchDto updateDto, Long id) {
 
-        User user = repository.findById(id).orElseThrow(EntityNotFoundException::new);
+
+
+        User user = repository.findById(id).orElseThrow(() -> new EntityNotFoundException("user not found"));
 
         user.setName(updateDto.getName());
 
@@ -118,12 +121,14 @@ public class UserService  implements UserDetailsService {
     }
 
     public void deleteUser(Long id) {
-        repository.deleteById(id);
+        User user = repository.findById(id).orElseThrow(() -> new EntityNotFoundException("user not found"));
+
+        repository.delete(user);
     }
 
     public UserBaseDto getUserProfile(Long id) {
 
-        User user = repository.findById(id).orElseThrow(EntityNotFoundException::new);
+        User user = repository.findById(id).orElseThrow(() -> new EntityNotFoundException("user not found"));
 
         return modelMapper.map(user , UserBaseDto.class);
     }
