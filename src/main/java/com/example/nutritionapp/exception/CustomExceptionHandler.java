@@ -185,17 +185,4 @@ public class CustomExceptionHandler {
                         .build());
     }
 
-
-    @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<CustomErrorResponse> handleJpaObjectRetrievalFailureException(UserNotFoundException e) {
-        log.error(e.getMessage(), e);
-        return ResponseEntity
-                .status(HttpStatus.NOT_FOUND)
-                .body(CustomErrorResponse.builder()
-                        .message(e.getMessage())
-                        .timestamp(LocalDateTime.now())
-                        .status(HttpStatus.NOT_FOUND)
-                        .build());
-    }
-
 }

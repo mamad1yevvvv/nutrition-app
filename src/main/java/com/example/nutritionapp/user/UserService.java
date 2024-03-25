@@ -7,7 +7,6 @@ import com.example.nutritionapp.email.entity.OTP;
 import com.example.nutritionapp.exception.EmailAlreadyExistException;
 import com.example.nutritionapp.exception.InvalidEmailAddressException;
 import com.example.nutritionapp.exception.PasswordNotMatchException;
-import com.example.nutritionapp.exception.UserNotFoundException;
 import com.example.nutritionapp.user.dto.*;
 import com.example.nutritionapp.user.entity.User;
 import jakarta.persistence.EntityNotFoundException;
