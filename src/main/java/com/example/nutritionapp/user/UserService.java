@@ -7,10 +7,7 @@ import com.example.nutritionapp.email.entity.OTP;
 import com.example.nutritionapp.exception.EmailAlreadyExistException;
 import com.example.nutritionapp.exception.InvalidEmailAddressException;
 import com.example.nutritionapp.exception.PasswordNotMatchException;
-import com.example.nutritionapp.user.dto.ForgotPasswordDto;
-import com.example.nutritionapp.user.dto.UserCreateDto;
-import com.example.nutritionapp.user.dto.UserResponseDto;
-import com.example.nutritionapp.user.dto.UserSignInDto;
+import com.example.nutritionapp.user.dto.*;
 import com.example.nutritionapp.user.entity.User;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.Getter;
@@ -118,7 +115,25 @@ public class UserService  implements UserDetailsService {
                         () -> new EntityNotFoundException("user with email = %s not found".formatted(email))
                 );
     }
+    public UserBaseDto getUserProfile(Long id) {
 
-    public void deleteUser() {
+        User user = repository.findById(id).orElseThrow(EntityNotFoundException::new);
+
+        return modelMapper.map(user, UserBaseDto.class);
+    }
+
+    public void deleteUser(Long id) {
+        repository.deleteById(id);
+    }
+
+    public UserResponseDto updateUser(UserPatchDto updateDto, Long id) {
+
+        User user = repository.findById(id).orElseThrow(EntityNotFoundException::new);
+
+        user.setName(updateDto.getName());
+
+        User saved = repository.save(user);
+
+        return getModelMapper().map(saved , UserResponseDto.class);
     }
 }
