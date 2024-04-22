@@ -2,9 +2,9 @@ server:
   port: 8080
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:1234/postgres
+    url: jdbc:postgresql://roundhouse.proxy.rlwy.net:32417/railway
     username: postgres
-    password: postgres
+    password: bzaLruObWRIjnmWIZVsXIsssTdGvIUsE
 
   mail:
     host: smtp.gmail.com
