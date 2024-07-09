@@ -14,7 +14,7 @@ import java.util.Objects;
 @RequiredArgsConstructor
 public class NutritionService {
     private final NutritionFeign feign;
-    private final String BEARER_TOKEN = "Bearer 04ae404054355d32d3e136b89b537f91a8e184fa";
+    private final String BEARER_TOKEN = "Bearer a16bc46d59e6bb87955559a7a3a94b28b11eb2bb";
     public String sendPhotoAndGetInfo(MultipartFile multipartFile)  {
         try {
             File file = convert(multipartFile);
@@ -26,6 +26,7 @@ public class NutritionService {
             throw new RuntimeException(e);
         }
     }
+
     public static File convert(MultipartFile multipartFile) throws IOException {
         File file = new File(Objects.requireNonNull(multipartFile.getOriginalFilename()));
         FileOutputStream fos = new FileOutputStream(file);

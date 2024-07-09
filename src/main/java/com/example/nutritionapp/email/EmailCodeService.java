@@ -46,7 +46,7 @@ public class EmailCodeService {
             int code = generateCode();
             SimpleMailMessage message = new SimpleMailMessage();
             message.setTo(email);
-            message.setSubject("FOOD RECIPE APP");
+            message.setSubject("Nutrition App");
             message.setText(text.formatted(email,code));
             mailSender.send(message);
 
@@ -75,7 +75,7 @@ public class EmailCodeService {
 
             SimpleMailMessage message = new SimpleMailMessage();
             message.setTo(email);
-            message.setSubject("FOOD RECIPE APP");
+            message.setSubject("Nutrition App");
             message.setText(text.formatted(email,code));
             mailSender.send(message);
 

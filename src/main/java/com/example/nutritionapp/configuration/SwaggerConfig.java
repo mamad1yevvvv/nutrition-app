@@ -38,8 +38,8 @@ public class SwaggerConfig {
                         .url("https://github.com/mamad1yevvvv/nutrition-app"))
                 .servers(List.of(
                         new Server()
-//                                .url("http://localhost:8080/")
-                                .url("https://nutrition-app-production.up.railway.app/")
+                                .url("http://localhost:8080/")
+//                                .url("https://nutrition-app-production.up.railway.app/")
                                 .description("Production")
                 )).addSecurityItem(new SecurityRequirement().addList("bearerAuth"))
                 .components(new Components()

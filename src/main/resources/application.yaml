@@ -2,15 +2,19 @@ server:
   port: 8080
 spring:
   datasource:
-    url: jdbc:postgresql://roundhouse.proxy.rlwy.net:32417/railway
+    url: jdbc:postgresql://localhost:1234/postgres
     username: postgres
-    password: bzaLruObWRIjnmWIZVsXIsssTdGvIUsE
+    password: postgres
 
   mail:
     host: smtp.gmail.com
     port: 587
-    username: mamad1yevvvv@gmail.com
-    password: hfln ztpe iady idbq
+#    username: mamad1yevvvv@gmail.com
+#    password: hfln ztpe iady idbq
+
+#    ikromova702@gmail.com
+#    xcbk vbry fnsw wthr
+
 
     properties:
       mail:
@@ -19,6 +23,8 @@ spring:
           starttls:
             enable: true
     default-encoding: UTF-8
+    username: ikromova702@gmail.com
+    password: xcbk vbry fnsw wthr
 
   jpa:
     properties:

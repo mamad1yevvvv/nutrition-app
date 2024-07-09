@@ -26,7 +26,7 @@ public class JwtService {
                 .setSubject(phone)
                 .signWith(signKey())
                 .setIssuedAt(Date.from(Instant.now()))
-                .setExpiration(Date.from(Instant.now().plus(3, ChronoUnit.DAYS)))
+                .setExpiration(Date.from(Instant.now().plus(10, ChronoUnit.DAYS)))
                 .setIssuer("www.nutrition-app.com")
                 .compact();
     }
